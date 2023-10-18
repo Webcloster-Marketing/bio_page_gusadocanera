@@ -2,12 +2,196 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Gustabo Adolfo Canaval Erazo</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet" />
   </head>
-  <body>
-    <div id="app"></div>
+
+  <body class="bg-[url('./src/assets/images/pattern_1.webp')]" x-data="biodata">
+    <!--  -->
+
+    <div class="flex flex-col items-center justify-center">
+      <!-- Borderer -->
+      <div
+        class="h-3 w-full border-y-[1px] bg-gradient-to-b from-lochmara-600 to-endeavour-700"></div>
+
+      <!-- Header -->
+      <header class="relative w-full">
+        <div
+          class="mt-4 flex flex-col items-center justify-center sm:mt-6 lg:mt-12">
+          <!-- profile img -->
+          <article class="relative m-5">
+            <div
+              class="rounded-full border-[12px] border-white bg-gradient-to-b from-lochmara-600 to-endeavour-700 p-4 shadow-lg shadow-lochmara-950">
+              <img
+                class="aspect-square w-40 rounded-full object-cover sm:w-52 lg:w-60 xl:w-64"
+                src="./src/assets/images/foto_1.webp"
+                alt="foto del usuario" />
+            </div>
+            <div
+              class="absolute bottom-0 right-0 rounded-full border-[6px] border-white shadow-lg shadow-lochmara-950 sm:translate-x-[20%] sm:translate-y-[20%]">
+              <img
+                class="aspect-square w-16 sm:w-24 lg:w-28"
+                src="./src/assets/images/logo_1.webp"
+                alt="logo" />
+            </div>
+          </article>
+
+          <!-- Titles -->
+          <articlediv
+            class="container mx-auto px-2 py-4 text-white sm:px-4 md:px-8">
+            <div
+              class="font-moncentserrat backdrop-brightness-98 mx-auto rounded-xl p-4 text-center backdrop-blur-sm backdrop-saturate-[92%] lg:max-w-xl xl:max-w-2xl">
+              <!-- profile name -->
+              <h1
+                class="px- mb-2 flex-grow border-b-2 border-white py-1 text-3xl font-semibold"
+                x-text="bio_name"></h1>
+              <!-- profile position -->
+              <h3
+                class="max-w-full flex-shrink flex-grow-0 text-lg"
+                x-text="bio_position"></h3>
+            </div>
+          </articlediv>
+
+          <!-- Socials -->
+          <article class="mb-3 mt-1 flex">
+            <template x-for="social in bio_social">
+              <a
+                :href="social.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mx-4 rounded-full bg-white px-2 py-1 text-endeavour-900 hover:text-lochmara-700 hover:shadow-xl">
+                <i
+                  class="flex items-center justify-center text-3xl"
+                  :class="social.icon"></i>
+              </a>
+            </template>
+          </article>
+
+          <!-- Whatsapp -->
+          <article class="my-5">
+            <a
+              :href="'https://api.whatsapp.com/send?phone=' + bio_whatsapp"
+              target="_blank"
+              rel="noopener noreferrer "
+              class="font-3xl flex items-center justify-center rounded-md bg-white px-4 py-2 font-semibold text-endeavour-800 shadow-sm hover:font-bold hover:text-lochmara-700 hover:shadow-xl sm:w-60">
+              <i class="ri-whatsapp-line pr-3 text-2xl"></i>
+              <span>Contáctame</span>
+            </a>
+          </article>
+        </div>
+        <!--  -->
+        <img
+          class="absolute top-0 z-[-1] h-full w-full object-cover"
+          src="./src/assets/images/cabezal_1.webp"
+          alt="banner" />
+      </header>
+
+      <!-- Profile description -->
+      <section
+        class="container mx-auto my-10 flex max-w-4xl flex-col items-center justify-center px-2">
+        <section>
+          <img
+            class="mb-4 w-24"
+            src="./src/assets/images/icono_1.webp"
+            alt="" />
+        </section>
+        <!-- description -->
+        <article
+          class="lx:px-8 font-moncerrat container rounded-md p-4 px-2 text-center text-base text-endeavour-950 shadow backdrop-blur-md backdrop-saturate-[180%] sm:px-4"
+          style="border: 1px solid rgba(209, 213, 219, 0.7)">
+          <template x-for="paragraphs in bio_profile.description">
+            <p x-text="paragraphs"></p>
+          </template>
+        </article>
+      </section>
+
+      <!--  -->
+      <section class="">
+        <template x-for="address in bio_address">
+          <article
+            class="font-moncerrat my-8 rounded-lg p-4 text-center text-endeavour-700 shadow-md backdrop-blur-lg backdrop-saturate-[180%] md:max-w-2xl"
+            style="border: 1px solid rgba(209, 213, 219, 0.7)">
+            <section class="my-4 flex justify-center">
+              <a
+                :href="address.map_url"
+                target="_blank"
+                class="flex w-full items-center justify-center rounded-md bg-gradient-to-b from-lochmara-600 to-endeavour-700 px-4 py-3 font-semibold text-white hover:text-lg sm:w-60">
+                <i class="ri-map-pin-2-line pr-3 text-xl"></i>
+                <span>Encuentrame en:</span>
+              </a>
+            </section>
+
+            <section>
+              <header
+                class="text-center font-semibold"
+                x-text="address.address"></header>
+              <p>
+                <small class="text-base" x-text="address.city"></small>/
+                <small class="text-base" x-text="address.department"></small>
+              </p>
+              <p class="text-base" x-text="address.country"></p>
+            </section>
+
+            <section class="mx-auto my-2 max-w-3xl">
+              <div class="relative text-right">
+                <div
+                  class="w h overflow-hidden rounded-lg border-2 border-endeavour-700 bg-none">
+                  <iframe
+                    class="min-h-[200px] h-full w-full"
+                    :src="address.maps_address"
+                    frameborder="0"
+                    scrolling="no"
+                    marginheight="0"
+                    marginwidth="0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+                </div>
+                
+              </div>
+            </section>
+          </article>
+        </template>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="container relative mx-auto my-14 flex h-full w-full items-center justify-between overflow-hidden rounded-md shadow-gray-500 drop-shadow-lg lg:container">
+        <img
+          class="mx-5 my-2 aspect-square w-16 rounded-full border-4 shadow-md shadow-gray-600"
+          src="./src/assets/images/logo_1.webp"
+          alt="logo" />
+
+        <article
+          class="font-moncentserrat rounded-lg px-4 py-2 text-base font-semibold text-white backdrop-blur-lg backdrop-saturate-[90%]">
+          <div class="text-right" x-text="bio_mail"></div>
+          <div class="text-right">Santiago de Cali - Valle del Cauca</div>
+          <div class="text-right">Colombia</div>
+        </article>
+        <!--  -->
+        <div
+          class="absolute left-0 top-0 z-[-1] h-full w-32 bg-white"
+          style="border-radius: 62% 38% 100% 0% / 0% 100% 0% 100%"></div>
+        <div class="absolute left-0 top-0 z-[-2] flex h-full w-full">
+          <img
+            class="flex-1 object-cover"
+            src="./src/assets/images/cabezal_1.webp"
+            alt="pie de pagina" />
+        </div>
+      </footer>
+
+      <!-- Borderer -->
+      <div
+        class="mx-auto h-3 w-full border-y-[1px] bg-gradient-to-b from-lochmara-600 to-endeavour-700 sm:px-4"></div>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
